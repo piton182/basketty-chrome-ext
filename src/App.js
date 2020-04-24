@@ -45,11 +45,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="App-title">{this.state.domain}</h1>
-        Top Headlines:
-        {this.state.headlines.map(headline => (
-          <h4 className="link" onClick={() => {
-            window.open(headline.url)}}>{headline.title}</h4>))}
+        Basketty
+          {/* <div className="App-title">{this.state.domain}</div>
+          Top Headlines:
+          {this.state.headlines.map(headline => (
+            <div className="link" onClick={() => {
+              window.open(headline.url)}}>{headline.title}</div>))} */}
       </div>
     );
   }

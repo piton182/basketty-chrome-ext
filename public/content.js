@@ -1,19 +1,17 @@
 chrome.runtime.onMessage.addListener(request => {
   if (request.type === 'getHeadlines') {
-    const modal = document.createElement('dialog');
-    modal.setAttribute("style", "height:40%");
-    modal.innerHTML = `<iframe id="basketty::basket" style="height:100%"></iframe>
-        <div style="position:absolute; top:0px; left:5px;">
-            <button>x</button>
-        </div>`;
+    const modal = document.createElement('div');
+    modal.setAttribute('id', 'basketty::overlay');
+    modal.setAttribute("style", "z-index: 2000; position: fixed; width: 300px; height: 100%; right: 0; bottom: 0;"); /* TODO: move to ?.css */
+    modal.innerHTML = `<iframe id="basketty::basket" style="height:100%"></iframe>`;
     document.body.appendChild(modal);
-    const dialog = document.querySelector("dialog");
-    dialog.showModal();
+    const dialog = document.getElementById("basketty::overlay");
+    // dialog.show();
     const iframe = document.getElementById("basketty::basket");  
     iframe.src = chrome.extension.getURL("index.html");
     iframe.frameBorder = 0;
-    dialog.querySelector("button").addEventListener("click", () => {
-        dialog.close();
-     });
+    // dialog.querySelector("button").addEventListener("click", () => {
+    //     modal.close();
+    //  });
   }
 });
